@@ -19,7 +19,8 @@ body {
   text-align: center;
   height: 100vh;
   align-items: center;
-  background-color: #1a1a1d;
+  background-image: url("https://cdn.hipwallpaper.com/i/71/71/XBSFfT.jpg");
+  background-size: cover;
 }
 
 .joinInnerContainer {

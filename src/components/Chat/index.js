@@ -21,34 +21,28 @@ const Chat = ({ location }) => {
   const ENDPOINT = config.API_URL;
 
   useEffect(() => {
-    const { nameQ, roomQ } = queryString.parse(window.location.search);
-
+    const { name, room } = queryString.parse(location.search);
     socket = io(ENDPOINT);
-
-    setRoom(roomQ);
-    setName(nameQ);
-
-    socket.emit("join", { nameQ, roomQ }, error => {
-      if (error) {
-        alert(error);
-      }
+    setRoom(name);
+    setName(room);
+    socket.emit("join", { name, room }, error => {
+      if (error) throw error;
     });
-  }, [ENDPOINT]);
+
+    return () => {
+      socket.emit("disconnect");
+      socket.off();
+    };
+  }, [ENDPOINT, location.search]);
 
   useEffect(() => {
     socket.on("message", message => {
       setMessages([...messages, message]);
     });
 
-    socket.on("roomData", ({ users }) => {
+    socket.on("stat", ({ users }) => {
       setUsers(users);
     });
-
-    return () => {
-      socket.emit("disconnect");
-
-      socket.off();
-    };
   }, [messages]);
 
   const sendMessage = event => {

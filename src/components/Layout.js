@@ -5,10 +5,7 @@ import Swiper from "./Swiper";
 import API from "../utils/API";
 
 export default function Layout() {
-  const [users, setUsers] = useState([
-    { id: 1, first: "Chris", last: "P", roles: [{ guitar: 3, drums: 10, piano: 15, vocals: 20 }] },
-    { id: 2, first: "Nina", last: "L", roles: [{ guitar: 3, drums: 10, piano: 15, vocals: 20 }] }
-  ]);
+  const [users, setUsers] = useState([]);
   const [user, setUser] = useState(users[0]);
 
   const handleUserSwipe = like => {

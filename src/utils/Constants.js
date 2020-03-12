@@ -1,6 +1,5 @@
-// production
 const prod = {
-  API_URL: "https://mosh-api.herokuapp.com"
+  API_URL: "https://moshsocial-api.herokuapp.com"
 };
 
 const dev = {
